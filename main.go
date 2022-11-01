@@ -1,6 +1,7 @@
 package main
 
 import (
+	"log"
 	"net/http"
 )
 
@@ -15,5 +16,7 @@ func main() {
 	http.HandleFunc("/form", formHandler)
 	http.HandleFunc("/form", helloHandler)
 
-	if err := http.ListenAndServe(":8080", nil);
+	if err := http.ListenAndServe(":8080", nil); err != nil {
+		log.Fatal(err)
+	}
 }
