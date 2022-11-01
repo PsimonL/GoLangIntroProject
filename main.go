@@ -10,7 +10,10 @@ import (
 // https://www.youtube.com/watch?v=jFfo23yIWac&t=611s
 
 func main() {
-	fileServer := http.FileServer()
-}
+	fileServer := http.FileServer(http.Dir("./static")) // default points to index.html
+	http.Handle("/", fileServer)                        // root route
+	http.HandleFunc("/form", formHandler)
+	http.HandleFunc("/form", helloHandler)
 
-sadasdas
+	if err := http.ListenAndServe(":8080", nil);
+}
